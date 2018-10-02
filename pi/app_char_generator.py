@@ -51,10 +51,14 @@ def get_random_arcade_matrix(pattern):
 def fetch_pattern():
     print("Fetching from Firebase")
     patterns = firebase_ref_arcade.get()
+    pattern = []
+    i = 0
     if patterns is not None:
         print("Found some stuff!")
+        return false
     else:
         print("Found nothing...")
+        return false
 
 
 try:
