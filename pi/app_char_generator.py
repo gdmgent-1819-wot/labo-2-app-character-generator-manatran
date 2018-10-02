@@ -24,7 +24,7 @@ try:
         "databaseURL": databaseURL
     })
 
-    firebase_ref_arcade = db.reference("arcade-characters")
+    firebase_ref_arcade = db.reference("arcade-python")
 except:
     print('Unable to initialize Firebase: {}'.format(sys.exc_info()[0]))
     sys.exit(1)

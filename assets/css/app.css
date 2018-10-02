@@ -1,16 +1,26 @@
 body{
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
   margin: 0;
   padding: 0;
   background-color: #303030;
   color: #eee;
-  font-family: Roboto, sans-serif;
   padding: 16px;
   box-sizing: border-box;
 }
+
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 h1{
   margin: 0;
   padding-bottom: 16px;
 }
+
 .grid{
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -22,10 +32,42 @@ h1{
 }
 
 .pixel{
+  border-radius: 4px;
   cursor: pointer;
-  box-shadow: 1px 1px 4px rgb(0,0,0);
+  box-shadow: 1px 1px 4px black;
   background-color: #202020;
 }
 .lit{
-  background-color: #eee;
+  background-color: white;
+  box-shadow: 0 0 16px #fb6;
+}
+
+button{
+  margin-top: 32px;
+  background-color: #039be5;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'Roboto Black', 'Roboto', sans-serif;
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 8px 16px;
+  padding-left: 7px;
+  text-transform: uppercase;
+  color: white;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  transition: .2s;
+}
+button:hover{
+  box-shadow: 1px 1px 6px rgba(0,0,0,0.95);
+}
+button:active {
+  box-shadow: none;
+}
+button img {
+  padding-right: 8px;
+  height: 24px;
 }
