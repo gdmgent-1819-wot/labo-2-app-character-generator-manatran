@@ -48,23 +48,13 @@ def get_random_arcade_matrix(pattern):
     return(matrix)
 
 
-def get_pattern_from_db():
+def fetch_pattern():
+    print("Fetching from Firebase")
     patterns = firebase_ref_arcade.get()
-    i = 0
-    pattern = []
     if patterns is not None:
-        for key, val in patterns.items():
-            pattern.append(val)
-
-        while i < len(pattern):
-            character = get_random_arcade_matrix(pattern[i])
-            sense_hat.set_pixels(character)
-            i += 1
-            sleep(3)
-            if i > len(pattern):
-                i = 0
+        print("Found some stuff!")
     else:
-        sense_hat.show_message("There are no patterns saved yet")
+        print("Found nothing...")
 
 
 try:
@@ -78,7 +68,7 @@ except:
 
 def main():
     while True:
-        get_pattern_from_db()
+        fetch_pattern()
 
 
 if __name__ == "__main__":
@@ -87,6 +77,6 @@ if __name__ == "__main__":
     except (KeyboardInterrupt, SystemExit):
         print('Interrupt received! Stopping the application...')
     finally:
-        print('Cleaning up the mess...')
+        print('Stopping program')
         sense_hat.clear()
         sys.exit(0)
