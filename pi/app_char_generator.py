@@ -4,6 +4,7 @@ import os
 import sys
 import random
 from math import floor, ceil
+import json
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
@@ -24,7 +25,7 @@ try:
         "databaseURL": databaseURL
     })
 
-    firebase_ref_arcade = db.reference("arcade-python")
+    firebase_ref_arcade = db.reference("arcade-characters")
 except:
     print('Unable to initialize Firebase: {}'.format(sys.exc_info()[0]))
     sys.exit(1)
@@ -48,13 +49,25 @@ def get_random_arcade_matrix(pattern):
     return(matrix)
 
 
-def fetch_pattern():
+def fetch_patterns():
     print("Fetching from Firebase")
-    patterns = firebase_ref_arcade.get()
-    
-    if patterns is not None:
+    characters = firebase_ref_arcade.get()
+    char_array = []
+
+    if characters is not None:
         print("Found some stuff!")
-        return false
+        for key, val in characters.items():
+            char = val['char']
+            char_array.append(char)
+
+        # looping through characters
+        i = 0
+        while i < len(char_array):
+            char = char_array[i]
+            sense_hat.set_pixels(char)
+            print(char)
+            sleep(3)
+            i += 1
     else:
         print("Found nothing...")
         return false
@@ -71,7 +84,7 @@ except:
 
 def main():
     while True:
-        fetch_pattern()
+        fetch_patterns()
 
 
 if __name__ == "__main__":
