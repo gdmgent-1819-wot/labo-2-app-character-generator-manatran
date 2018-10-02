@@ -65,9 +65,9 @@ def fetch_patterns():
         while i < len(char_array):
             char = char_array[i]
             sense_hat.set_pixels(char)
-            print(char)
             sleep(3)
             i += 1
+
     else:
         print("Found nothing...")
         return false
